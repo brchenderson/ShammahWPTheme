@@ -16,6 +16,10 @@
     <!-- Fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
+    <!-- Font Awesome FIX THIS -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+
 	<!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
@@ -34,7 +38,7 @@
   {{nav}}
   {{main_carousel}}
   {% for page in pages %}
-    {%if page.post_parent == 0 %}
+    {%if page.post_parent == 0 and page.id != home.0.id %}
       {% include 'info.twig' with {'partners' : partners, 'staff' : staff, 'donate' : donate} %}
     {% endif %}
   {% endfor %}      
@@ -54,9 +58,10 @@
     <script src="{{template_uri}}/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="{{template_uri}}/js/ie10-viewport-bug-workaround.js"></script>
-<script src="{{template_uri}}/js/wow.min.js"></script>
-<script src="{{template_uri}}/js/waypoints.js"></script>
-<script src="{{template_uri}}/js/script.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script src="{{template_uri}}/js/wow.min.js"></script>
+    <script src="{{template_uri}}/js/waypoints.js"></script>
+    <script src="{{template_uri}}/js/script.js"></script>
 <script>
 jQuery('.carousel').carousel();
 </script>

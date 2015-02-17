@@ -30,7 +30,8 @@ Text Domain: shammah
 	background-attachment: fixed; 
 	background-position: center top;  
 	background-size: cover; 
-	font-family:'Open Sans', sans-serif; height:100vh;
+	font-family:'Open Sans', sans-serif; 
+  min-height:100vh;
 }
 
 .page-inactive{
@@ -82,7 +83,7 @@ Text Domain: shammah
 
 
 .main-pages {
-	height:100vh; 
+	min-height:100vh; 
 	background-color:rgba(255,255,255,0.6);
 }
 

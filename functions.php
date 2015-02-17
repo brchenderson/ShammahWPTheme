@@ -19,6 +19,14 @@
  *
  * @since Twenty Twelve 1.0
  */
+
+function enqueue_cdn_content() {
+	wp_register_style('fontawesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+	wp_enqueue_style('fontawesome');
+}
+
+add_action( 'wp_enqueue_scripts', 'enqueue_cdn_content' );
+
 function shammah_custom_header_setup() {
 	$args = array(
 		// Text color and image (empty to use none).
@@ -191,6 +199,7 @@ add_filter('timber_context', 'add_to_context');
 function add_to_context($data){             
     $data['menu'] = new TimberMenu('main-navigation'); 
     $data['ishome'] = is_home(); 
+    $data['home_id'] = get_option('page_on_front'); 
     return $data;
 }
 
@@ -452,6 +461,40 @@ if(function_exists("register_field_group"))
 }
 
 
+function setup_theme_admin_menus() {
+	add_submenu_page('themes.php', 
+        'Theme Options', 'Theme Options', 'manage_options', 
+        'theme-options', 'theme_front_page_settings'); 
+}
+add_action("admin_menu", "setup_theme_admin_menus");
 
+function theme_front_page_settings() {
+    if (!current_user_can('manage_options')) {
+    wp_die('You do not have sufficient permissions to access this page.');
+}
+?>
+<div class="wrap">
+<form method="POST" action="">
+<table class="form-table">
+	<tr valign="top">
+		<th scope="row">
+			<label for="singlevsmulti">
+				Single page layout?
+			</label>
+			</th>
+			<td>
+				<input type="checkbox" name="singlevsmulti">
+			</td>
+		</tr>
+	</table>
+</form>
+</div>
+
+
+</form>
+</div>
+  <?php
+  
+}
 
  ?>

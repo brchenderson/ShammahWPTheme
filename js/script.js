@@ -19,23 +19,15 @@ jQuery(function() {
             jQuery(this).addClass('page-nav-active');            			
         	jQuery(target).removeClass('page-inactive');			
 			jQuery(target).addClass('page-active');
-            var backgroundImg = jQuery(this).parent().children('.page-active').attr('data-background');
-                if (backgroundImg != ""){
-                    var backgroundTarget = (this);
-                    jQuery.ajax(backgroundImg).done(function() {        
-                        jQuery(backgroundTarget).css("background-image", "url('" + backgroundImg + "')") ;
-                    })
-                }
-            });
+            var backgroundImg = jQuery(target).parent().children('.page-active').attr('data-background');
+            jQuery(target).backstretch(backgroundImg);
 	
+    });
 });
 
-jQuery('.info-page').waypoint(function() {    
+
+
+jQuery('.info-page').waypoint(function() {
     var backgroundImg = jQuery(this).attr('data-background');
-    if (backgroundImg != ""){
-        var backgroundTarget = (this);
-        jQuery.ajax(backgroundImg).done(function() {        
-            jQuery(backgroundTarget).css("background-image", "url('" + backgroundImg + "')") ;
-        })
-    }
+    jQuery(this).backstretch(backgroundImg);
 },{offset: '75%'});

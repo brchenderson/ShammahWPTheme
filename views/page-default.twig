@@ -1,6 +1,8 @@
-        <div class="info-page {{ subpage and loop.index != 1 ? 'page-inactive' : 'page-active'}}" id="{{subpage.slug ?: page.slug }}" data-background="{{TimberImage(subpage.get_field('slide_image')).src}}">
+        <div class="info-page {{ subpage and loop.index != 1 ? 'page-inactive' : 'page-active'}}" id="{{subpage.slug ?: page.slug }}" data-background="{{function('jetpack_photon_url', TimberImage(subpage.get_field('slide_image')).src ?: TimberImage(page.get_field('slide_image')).src)}}">
           <div class="container main-pages">
+            {% if page.id != home_id %}
             <h2 class="featurette-heading center-block">{{subpage.title ?: page.title }}</h2>
+            {%endif %}
             {% if page.children %}
             <div class="col-md-7">
               <p class="lead">{{subpage.content ?: page.content }}</p>
